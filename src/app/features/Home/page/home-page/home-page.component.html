@@ -1,1 +1,15 @@
-<app-home></app-home>
+<app-home 
+[fsdf]="'test'" (countChanged)="consolingcount($event)">
+  <div #pageContentChild id="hello">hello</div>
+  <div #pageContentChildren>Page ContentChildren Element 1</div>
+  <div #pageContentChildren id="el2">Page ContentChildren Element 2</div>
+</app-home>
+
+<!-- Page ViewChild examples -->
+<div #pageViewChild>Page ViewChild Element</div>
+<div #pageViewChildren>Page ViewChildren Element 1</div>
+<div #pageViewChildren>Page ViewChildren Element 2</div>
+<div #pageViewChildren>Page ViewChildren Element 3</div>
+<div #pageViewChildren>Page ViewChildren Element 4</div>
+<div #pageViewChildren>Page ViewChildren Element 5</div>
+<div #pageViewChildren>Page ViewChildren Element 6</div>

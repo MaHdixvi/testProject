@@ -1,4 +1,14 @@
 <main class="content">
+  <div>
+  <p>Current Count: {{ count }}</p>
+  <button (click)="increment()">Increment</button>
+</div>
+
+<!-- ViewChild and ContentChild examples -->
+<div #viewchildcontent></div>
+<div #contentChildElements>ContentChildren Element 1</div>
+<div #contentChildElements>ContentChildren Element 2</div>
+
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-bg">
@@ -38,3 +48,27 @@
     </div>
   </section>
 </main>
+
+<div
+  class="table-responsive"
+>
+  <table
+    class="table table-primary"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of users; track $index) {
+        <tr  class="">
+        <td scope="row">{{item.id}}</td>
+        <td>{{item.name}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+

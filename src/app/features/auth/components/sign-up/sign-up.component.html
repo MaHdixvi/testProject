@@ -1,0 +1,137 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-header">
+      <h2>ثبت نام</h2>
+      <p>برای استفاده از خدمات سایت، ثبت نام کنید</p>
+    </div>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="signup-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">نام و نام خانوادگی *</label>
+        <input 
+          type="text" 
+          id="name" 
+          formControlName="name" 
+          placeholder="نام و نام خانوادگی خود را وارد کنید"
+          [class.error]="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched"
+        >
+        <div class="error-message" *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched">
+          {{ getErrorMessage('name') }}
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">ایمیل *</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="ایمیل خود را وارد کنید"
+          [class.error]="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
+        >
+        <div class="error-message" *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+          {{ getErrorMessage('email') }}
+        </div>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="phone">شماره موبایل</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          formControlName="phone" 
+          placeholder="09xxxxxxxxx"
+          [class.error]="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched"
+        >
+        <div class="error-message" *ngIf="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched">
+          {{ getErrorMessage('phone') }}
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">رمز عبور *</label>
+        <div class="password-input-container">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="password" 
+            formControlName="password" 
+            placeholder="رمز عبور خود را وارد کنید"
+            [class.error]="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
+          >
+          <button 
+            type="button" 
+            class="toggle-password" 
+            (click)="togglePasswordVisibility('password')"
+            [attr.aria-label]="showPassword ? 'مخفی کردن رمز عبور' : 'نمایش رمز عبور'"
+          >
+            <i [class]="showPassword ?  'fas fa-eye':  'fas fa-eye-slash'"></i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+          {{ getErrorMessage('password') }}
+        </div>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword">تأیید رمز عبور *</label>
+        <div class="password-input-container">
+          <input 
+            [type]="showConfirmPassword ? 'text' : 'password'" 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            placeholder="رمز عبور خود را تکرار کنید"
+            [class.error]="(signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched) || passwordMismatch"
+          >
+          <button 
+            type="button" 
+            class="toggle-password" 
+            (click)="togglePasswordVisibility('confirmPassword')"
+            [attr.aria-label]="showConfirmPassword ? 'مخفی کردن رمز عبور' : 'نمایش رمز عبور'"
+          >
+            <i [class]="showConfirmPassword ? 'fas fa-eye':  'fas fa-eye-slash'"></i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
+          {{ getErrorMessage('confirmPassword') }}
+        </div>
+        <div class="error-message" *ngIf="passwordMismatch">
+          رمز عبور و تأیید رمز عبور باید یکسان باشند
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+
+      <!-- Success Message -->
+      <div class="alert alert-success" *ngIf="successMessage">
+        <i class="fas fa-check-circle"></i>
+        {{ successMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="submit-btn" 
+        [disabled]="isLoading"
+      >
+        <span *ngIf="!isLoading">ثبت نام</span>
+        <span *ngIf="isLoading">
+          <i class="fas fa-spinner fa-spin"></i>
+          در حال ثبت نام...
+        </span>
+      </button>
+    </form>
+
+    <div class="signup-footer">
+      <p>قبلاً ثبت نام کرده‌اید؟ <a routerLink="/login">ورود به حساب کاربری</a></p>
+    </div>
+  </div>
+</div>
