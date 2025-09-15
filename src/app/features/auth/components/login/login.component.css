@@ -1,0 +1,99 @@
+/* فرم وسط صفحه با سایه و padding */
+form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  background-color: #f7f9fc;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* گروه هر input */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* لیبل ها */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* input ها */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* فوکوس روی input */
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.4);
+  outline: none;
+}
+
+/* وقتی input نامعتبر است */
+input.invalid {
+  border-color: #d9534f;
+  animation: shake 0.3s;
+}
+
+/* پیام خطا */
+.error {
+  color: #d9534f;
+  font-size: 13px;
+  margin-top: 5px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* نمایش پیام خطا */
+.error.ng-star-inserted {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* انیمیشن shake برای input اشتباه */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+/* دکمه */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* هاور روی دکمه */
+button:hover:not([disabled]) {
+  background-color: #0056b3;
+}
+
+/* دکمه غیر فعال */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

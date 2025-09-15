@@ -1,1 +1,37 @@
-<p>login works!</p>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input 
+      type="text" 
+      id="username" 
+      name="username" 
+      [(ngModel)]="formlogin.username" 
+      #user="ngModel"
+      required
+      pattern="^[a-zA-Z0-9_]{3,20}$"
+      [class.invalid]="user.invalid && user.touched">
+
+    <div class="error" *ngIf="user.errors?.['pattern'] && user.touched">
+      فقط حروف انگلیسی، اعداد و آندرلاین مجاز هستند (۳ تا ۲۰ کاراکتر).
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input 
+      type="password" 
+      id="password" 
+      name="password" 
+      minlength="6" 
+      #pass="ngModel" 
+      [(ngModel)]="formlogin.password" 
+      required
+      [class.invalid]="pass.invalid && pass.touched">
+      
+    <div class="error" *ngIf="pass.errors?.['minlength'] && pass.touched">
+      حداقل ۶ کاراکتر وارد کنید.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
