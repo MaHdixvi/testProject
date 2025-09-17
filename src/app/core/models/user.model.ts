@@ -1,10 +1,10 @@
 export interface User {
-  id?: number;
+  id?: string;
   name: string;
   email: string;
   password?: string;
   phone?: string;
-  createdAt?: Date;
+  createdAt?: string|Date;
 }
 
 export interface SignUpRequest {

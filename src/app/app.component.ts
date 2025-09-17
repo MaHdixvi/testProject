@@ -20,26 +20,17 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LanguageService } from './shared/services/language.service';
 import { FormsModule } from '@angular/forms';
 import moment from 'moment-jalaali';
+import { UsersComponent } from "./features/users/components/users/users.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    NgFor,
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    DecimalPipe,
-    PercentPipe,
-    CurrencyPipe,
-    UpperCasePipe,
-    TitleCasePipe,
-    DatePipe,
     NgbModule,
     NgbDatepickerModule,
-  ],
+    UsersComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

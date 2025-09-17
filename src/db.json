@@ -1,10 +1,42 @@
 {
   "users": [
     {
-      "id": "f758",
-      "name": "aslkdjasldjasld",
-      "email": "mahdi@gmail.com",
-      "password": "mahdi1383"
+      "id": "1",
+      "name": "محمد امینی",
+      "email": "mohammad@example.com",
+      "phone": "09120000001",
+      "createdAt": "2025-09-17T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "فاطمه محمدی",
+      "email": "fatemeh@example.com",
+      "phone": "09120000002",
+      "createdAt": "2025-09-17T11:00:00Z"
+    },
+    {
+      "id": "30e8",
+      "name": "lsdkf;dskf;l",
+      "email": "klajdls@gmail.com",
+      "phone": "09100295341",
+      "createdAt": "2025-09-17T08:35:31.808Z"
+    }
+  ],
+  "userFields": [
+    {
+      "key": "name",
+      "label": "نام کاربر",
+      "type": "text"
+    },
+    {
+      "key": "email",
+      "label": "ایمیل",
+      "type": "email"
+    },
+    {
+      "key": "phone",
+      "label": "شماره تماس",
+      "type": "text"
     }
   ]
 }

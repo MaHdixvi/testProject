@@ -1,0 +1,90 @@
+<div class="container py-5">
+  <h2>مدیریت کاربران</h2>
+
+  <!-- فرم ایجاد کاربر -->
+  <h6 class="section-title">افزودن کاربر جدید</h6>
+  <div class="row mb-4">
+    <div class="col-md-4" *ngFor="let field of formFields">
+      <div class="form-group">
+        <label [for]="field.key">{{ field.label }}</label>
+        <input
+          [type]="field.type"
+          class="form-control"
+          [id]="field.key"
+          [placeholder]="field.label + ' را وارد کنید'"
+          [(ngModel)]="newUser[field.key]"
+          [name]="field.key"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-end">
+      <button class="btn btn-primary w-100" (click)="createUser()">
+        <i class="bi bi-person-plus"></i> ایجاد کاربر
+      </button>
+    </div>
+  </div>
+
+  <!-- فرم ویرایش کاربر -->
+  <div *ngIf="selectedUser">
+    <h6 class="section-title">ویرایش کاربر</h6>
+    <div class="row mb-4">
+      <div class="col-md-4" *ngFor="let field of formFields">
+        <div class="form-group">
+          <label [for]="'edit-' + field.key">{{ field.label }}</label>
+          <input
+            [type]="field.type"
+            class="form-control"
+            [id]="'edit-' + field.key"
+            [(ngModel)]="selectedUser[field.key]"
+            [name]="'edit-' + field.key"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex align-items-end">
+        <button class="btn btn-success w-100" (click)="updateUser()">
+          <i class="bi bi-save"></i> ذخیره تغییرات
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- لیست کاربران -->
+  <h6 class="section-title">لیست کاربران</h6>
+  <div class="row">
+    <div class="col-md-6 mb-3" *ngFor="let user of users">
+      <div class="card user-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h5 class="card-title">{{ user.name }}</h5>
+              <p class="card-text text-muted">
+                <i class="bi bi-envelope"></i> {{ user.email }}
+                <br *ngIf="user.phone"/>
+                <i class="bi bi-telephone"></i> {{ user.phone }}
+                <br />
+                <i class="bi bi-calendar"></i>
+                {{ user.createdAt | date: 'short' }}
+              </p>
+            </div>
+            <div class="col-4 text-start action-buttons">
+              <button
+                class="btn btn-sm btn-warning text-white mb-1"
+                (click)="setForEdit(user)"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deleteUser(user.id)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
